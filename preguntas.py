@@ -23,7 +23,7 @@ def pregunta_01():
     # retorna el dataframe con las dos columnas.
     df = pd.read_csv(
         "amazon_cells_labelled.tsv",
-        sep="t",
+        sep="\t",
         header=None,
         names=["msg","lbl"],
     )
@@ -74,13 +74,13 @@ def pregunta_03():
     """
     # Importe el stemmer de Porter
     # Importe CountVectorizer
-    from ____ import ____
+    from sklearn.feature_extraction.text import CountVectorizer
 
     # Cree un stemeer que use el algoritmo de Porter.
-    stemmer = ____
+    stemmer = PorterStemmer()
 
     # Cree una instancia del analizador de palabras (build_analyzer)
-    analyzer = ____().____()
+    analyzer = CountVectorizer().build_analyzer()
 
     # Retorne el analizador de palabras
     return lambda x: (stemmer.stem(w) for w in analyzer(x))
