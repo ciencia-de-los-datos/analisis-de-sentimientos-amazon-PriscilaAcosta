@@ -127,7 +127,7 @@ def pregunta_04():
     pipeline = Pipeline(
         steps=[
             ("cv", countVectorizer),
-            ("Ber", BernoulliNB()),
+            ("clf", BernoulliNB()),
         ],
     )
 
@@ -135,7 +135,7 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "Ber_alpha": np.linspace(0.1, 1, 10),
+        "clf_alpha": np.linspace(0.1, 1, 10),
     }
 
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
@@ -196,11 +196,11 @@ def pregunta_06():
     gridSearchCV = pregunta_04()
 
     # Cargue los datos generados en la pregunta 01.
-    _, _, X_untagged, _ = pregunta_01()
+    x_tagged, y_tagged, x_untagged, y_untagged = pregunta_01()
 
     # pronostique la polaridad del sentimiento para los datos
     # no etiquetados
-    y_untagged_pred = ____.____(____)
+    y_untagged_pred = gridSearchCV.predict(x_untagged)
 
     # Retorne el vector de predicciones
     return y_untagged_pred
